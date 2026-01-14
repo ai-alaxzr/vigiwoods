@@ -1,0 +1,21 @@
+{
+    "name": "VigiWoods Interior Design Abu Dhabi",
+    "short_name": "VigiWoods",
+    "description": "Premium Carpentry & Interior Design Services in Abu Dhabi.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#FAF8F3",
+    "theme_color": "#C9A961",
+    "icons": [
+        {
+            "src": "https://vigiwoodsinteriordesign.com/images/loggo.jpg",
+            "sizes": "192x192",
+            "type": "image/jpg"
+        },
+        {
+            "src": "https://vigiwoodsinteriordesign.com/images/loggo.jpg",
+            "sizes": "512x512",
+            "type": "image/jpg"
+        }
+    ]
+}
