@@ -883,15 +883,47 @@ p {
 
 .contact-form-card {
     background: white;
-    padding: 4rem;
+    padding: 3rem;
     border-radius: 2rem;
     box-shadow: var(--shadow-xl);
+}
+
+.form-tabs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: var(--cream);
+    padding: 0.5rem;
+    border-radius: var(--radius-md);
+}
+
+.form-tab {
+    flex: 1;
+    padding: 0.75rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: var(--text-light);
+    transition: all 0.3s;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.form-tab.active {
+    background: white;
+    color: var(--primary-gold);
+    box-shadow: var(--shadow-sm);
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .form-row {

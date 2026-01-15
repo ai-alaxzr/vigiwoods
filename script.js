@@ -116,13 +116,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Contact Form WhatsApp Integration
-    const contactForm = document.getElementById('contactForm');
+    // 6. Contact Form Logic (WhatsApp & Gmail)
+    let currentMode = 'whatsapp';
+    window.switchForm = (mode) => {
+        currentMode = mode;
+        const tabs = document.querySelectorAll('.form-tab');
+        const submitBtn = document.getElementById('submitBtn');
+
+        tabs.forEach(tab => tab.classList.remove('active'));
+        if (mode === 'whatsapp') {
+            tabs[0].classList.add('active');
+            submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Send via WhatsApp';
+        } else {
+            tabs[1].classList.add('active');
+            submitBtn.innerHTML = '<i class="fas fa-envelope"></i> Send via Gmail';
+        }
+    };
+
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
-            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('submitBtn');
             const originalText = submitBtn.innerHTML;
 
             // Loading state
@@ -134,25 +149,42 @@ document.addEventListener('DOMContentLoaded', () => {
             const service = document.getElementById('service').value;
             const message = document.getElementById('message').value;
 
-            const whatsappText = `*New Inquiry from VigiWoods Website*%0A%0A` +
-                `*Name:* ${name}%0A` +
-                `*Phone:* ${phone}%0A` +
-                `*Service:* ${service}%0A` +
-                `*Project:* ${message}`;
-
-            const whatsappUrl = `https://wa.me/971527886905?text=${whatsappText}`;
-
-            // Professional delay for feedback
-            setTimeout(() => {
-                submitBtn.innerHTML = '<i class="fas fa-check"></i> Redirecting to WhatsApp...';
+            if (currentMode === 'whatsapp') {
+                const whatsappText = `*New Inquiry from VigiWoods Website*%0A%0A` +
+                    `*Name:* ${name}%0A` +
+                    `*Phone:* ${phone}%0A` +
+                    `*Service:* ${service}%0A` +
+                    `*Project:* ${message}`;
+                const whatsappUrl = `https://wa.me/971527886905?text=${whatsappText}`;
 
                 setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                    contactForm.reset();
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Opening WhatsApp...';
+                    setTimeout(() => {
+                        window.open(whatsappUrl, '_blank');
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        contactForm.reset();
+                    }, 1000);
                 }, 1000);
-            }, 1000);
+            } else {
+                const emailSubject = `Project Inquiry: ${service}`;
+                const emailBody = `Name: ${name}%0APhone: ${phone}%0AService: ${service}%0A%0AProject Information:%0A${message}`;
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=vigiwoodsofficial@gmail.com&su=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+                const mailtoUrl = `mailto:vigiwoodsofficial@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Opening Gmail...';
+                    setTimeout(() => {
+                        const newWindow = window.open(gmailUrl, '_blank');
+                        if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
+                            window.location.href = mailtoUrl;
+                        }
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                        contactForm.reset();
+                    }, 1000);
+                }, 1000);
+            }
         });
     }
 
