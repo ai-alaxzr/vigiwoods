@@ -145,6 +145,7 @@
                     <a href="#about" class="nav-link">About</a>
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#blog" class="nav-link">Blog</a>
                     <a href="#contact" class="nav-link">Contact</a>
                     <a href="tel:+971527886905" class="btn-primary">
                         <i class="fas fa-phone-alt"></i> Call Now
@@ -587,6 +588,85 @@
         </div>
     </section>
 
+    <!-- Blog Section -->
+    <section class="blog" id="blog">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">Insights & Tips</span>
+                <h2>Interior Design Blog</h2>
+                <p>Expert advice, design trends, and inspiration for your home and office spaces.</p>
+                <button class="btn-primary btn-write-post" id="writePostBtn" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-pen-fancy"></i> Write a Blog Post
+                </button>
+            </div>
+
+            <!-- Blog Posts Grid -->
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog posts will be dynamically inserted here -->
+                <div class="no-posts-message">
+                    <i class="fas fa-feather-alt"></i>
+                    <p>No blog posts yet. Be the first to share your design insights!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Post Creation Modal -->
+    <div id="blogModal" class="modal">
+        <div class="modal-content blog-modal-content">
+            <div class="modal-header">
+                <h3>Create a Blog Post</h3>
+                <button class="close-modal" id="closeModal" aria-label="Close blog creation dialog">&times;</button>
+            </div>
+            <form id="blogForm" class="blog-form">
+                <div class="form-group floating-label">
+                    <input type="text" id="blogTitle" name="title" required placeholder=" " maxlength="100">
+                    <label for="blogTitle">Blog Title</label>
+                </div>
+
+                <div class="form-group floating-label">
+                    <input type="text" id="blogAuthor" name="author" required placeholder=" " maxlength="50">
+                    <label for="blogAuthor">Your Name</label>
+                </div>
+
+                <div class="form-group floating-label">
+                    <input type="email" id="blogEmail" name="email" required placeholder=" ">
+                    <label for="blogEmail">Email Address</label>
+                </div>
+
+                <div class="form-group floating-label">
+                    <textarea id="blogContent" name="content" required placeholder=" " rows="6" maxlength="5000"></textarea>
+                    <label for="blogContent">Blog Post Content</label>
+                    <small id="charCount">0 / 5000 characters</small>
+                </div>
+
+                <div class="form-group floating-label">
+                    <input type="text" id="blogCategory" name="category" placeholder=" " maxlength="30">
+                    <label for="blogCategory">Category (e.g., Design Tips, Project Showcase)</label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" id="cancelBtn" aria-label="Cancel blog post creation">Cancel</button>
+                    <button type="submit" class="btn-primary" aria-label="Publish blog post">
+                        <i class="fas fa-paper-plane"></i> Publish Post
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Blog Post Detail Modal -->
+    <div id="blogDetailModal" class="modal" aria-label="Blog post detail view">
+        <div class="modal-content blog-detail-modal-content">
+            <div class="modal-header">
+                <button class="close-modal" id="closeBlogDetail" aria-label="Close blog post detail"></button>
+            </div>
+            <div id="blogDetailContent" class="blog-detail-content">
+                <!-- Blog post details will be inserted here -->
+            </div>
+        </div>
+    </div>
+
     <!-- Contact & Map Section -->
     <section class="contact" id="contact">
         <div class="container">
@@ -690,6 +770,7 @@
                             <li><a href="#about">About Us</a></li>
                             <li><a href="#services">Services</a></li>
                             <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#blog">Blog</a></li>
                         </ul>
                     </div>
                     <div class="footer-col">
